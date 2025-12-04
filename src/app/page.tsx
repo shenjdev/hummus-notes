@@ -1,5 +1,6 @@
 // app/page.tsx or similar file where your main content lives
 
+import BlogCard from '@/components/BlogCard';
 import Image from 'next/image';
 // Import your blog card components, etc.
 
@@ -8,7 +9,7 @@ export default function HomePage() {
     <div className="flex flex-col">
 
       {/* Hero Section */}
-      <section className="min-h-[calc(100vh-4rem)] flex flex-col justify-center max-w-[740px]">
+      <section className="mb-20 min-h-[calc(100vh-4rem)] flex flex-col justify-center max-w-[740px]">
         <div className="mt-5 sm:mt-10 mb-7 sm:mb-10 hover:cursor-pointer">
           <Image 
             src="/mr-beast-thumbnail-money-pool.jpg"
@@ -38,7 +39,18 @@ export default function HomePage() {
       </section>
 
       {/* Recent Blog Section */}
-      <section className="h-screen bg-gray-50 p-8">
+      <section className="h-screen p-8">
+        <div className="grid grid-cols-2 gap-4">
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+
+        </div>
+          
+
+      
+
     
       </section>
       
