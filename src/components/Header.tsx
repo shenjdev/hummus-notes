@@ -16,6 +16,12 @@ export default function Header() {
           hummusnotes
         </div>
         <nav className="nav-links px-4 flex items-center text-sm sm:text-xl font-bold gap-5">
+          <a
+            className=""
+            onClick={() => router.push('/notes')}
+          >
+            Notes
+          </a>
           <a 
             className=""
             onClick={() => router.push('/about')}
@@ -27,12 +33,6 @@ export default function Header() {
             onClick={() => router.push('/contact')}
           >
             Contact
-          </a>
-          <a
-            className=""
-            onClick={() => router.push('/notes')}
-          >
-            Notes
           </a>
         </nav>
       </div>
