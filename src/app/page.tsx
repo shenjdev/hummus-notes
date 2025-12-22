@@ -1,14 +1,19 @@
-// app/page.tsx or similar file where your main content lives
+'use client'
 
 import BlogCard from '@/components/BlogCard';
 import Image from 'next/image';
 import { getAllPosts } from '../../lib/posts';
+import { useRouter } from "next/navigation"
+import { usePathname } from "next/navigation";
 
 export default function HomePage() {
 
   const posts = getAllPosts();
   const hero = posts[0];
   const recent = posts.slice(1,5);
+
+  const router = useRouter();
+  const pathname = usePathname();
 
 
   return (
@@ -45,18 +50,18 @@ export default function HomePage() {
       </section>
 
       {/* Recent Blog Section */}
-      <section className="h-screen p-8">
-        <div className="grid grid-cols-2 gap-4">
+      <section className="h-screen-min p-8">
+        <div className="grid grid-cols-2 gap-4 mb-10">
           {recent.map((post) => (
             <BlogCard key={post.slug} post={post} />
           ))}
-
         </div>
-          
-
-      
-
-    
+        <p 
+          className="hover:cursor-pointer hover:opacity-70 active:opacity-90 flex justify-center text-4xl border-b-2 border-b-[#E5E5E5] font-extrabold"
+          onClick={() => router.push('/notes')}
+        >
+          See more
+        </p>
       </section>
       
     </div>
