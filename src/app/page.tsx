@@ -51,13 +51,13 @@ export default function HomePage() {
 
       {/* Recent Blog Section */}
       <section className="h-screen-min p-8">
-        <div className="grid grid-cols-2 gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
           {recent.map((post) => (
             <BlogCard key={post.slug} post={post} />
           ))}
         </div>
         <p 
-          className="hover:cursor-pointer hover:opacity-70 active:opacity-90 flex justify-center text-4xl border-b-2 border-b-[#E5E5E5] font-extrabold"
+          className="hover:cursor-pointer hover:opacity-70 active:opacity-90 flex justify-center text-lg sm:text-4xl border-b-2 border-b-[#E5E5E5] font-extrabold"
           onClick={() => router.push('/notes')}
         >
           See more
