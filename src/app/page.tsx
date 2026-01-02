@@ -57,7 +57,7 @@ export default function HomePage() {
           ))}
         </div>
         <p 
-          className="hover:cursor-pointer hover:opacity-70 active:opacity-90 flex justify-center text-lg sm:text-4xl border-b-2 border-b-[#E5E5E5] font-extrabold"
+          className="hover:cursor-pointer hover:opacity-70 active:opacity-90 flex justify-center text-lg waism:text-4xl border-b-2 border-b-[#E5E5E5] font-extrabold"
           onClick={() => router.push('/notes')}
         >
           See more
