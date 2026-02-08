@@ -22,13 +22,13 @@ export default function BlogCard({ post }: {post: Post}) {
             {post.title}
         </p>
         <div className="nav-links text-sm flex gap-2 text-[#919191]">
-          <a>
+          <span>
             {post.author}
 
-          </a>
-          <a>
+          </span>
+          <span>
             {post.date}
-          </a>
+          </span>
         </div>
         <div className="line-clamp-3 text-md">
           {post.body}
