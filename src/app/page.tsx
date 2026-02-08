@@ -2,7 +2,7 @@
 
 import BlogCard from '@/components/BlogCard';
 import Image from 'next/image';
-import { getAllPosts } from '../../lib/posts';
+import { getAllPosts } from '../lib/posts';
 import { useRouter } from "next/navigation"
 import { usePathname } from "next/navigation";
 

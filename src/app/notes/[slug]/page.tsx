@@ -1,6 +1,18 @@
 import Image from "next/image";
+import { notFound } from "next/navigation";
+import { getPostBySlug } from "@/lib/posts";
 
-export default function Page() {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+
+  const { slug } = await params;
+
+  const post = getPostBySlug(slug);
+  if (!post) notFound();
+
   return (
     <div className="max-w-6xl mx-auto  py-10">
       <div className="grid grid-cols-1 md:grid-cols-[1fr_320px]">
@@ -8,8 +20,8 @@ export default function Page() {
           <article className="w-full"> 
             <div className="w-full aspect-video relative mb-4">
               <Image 
-                src="/chromakopia-thumbnail.jpeg"
-                alt="thumbnail"
+                src={post.thumbnail}
+                alt={post.title}
                 fill
                 className="object-cover object-top"
               
@@ -18,19 +30,19 @@ export default function Page() {
             </div>
             <div className="px-2 md:px-6 mx-auto">
               <p className="text-xl sm:text-3xl font-extrabold mb-2 sm:mb-4 hover:cursor-pointer">
-                Why Chromakopia was released at the peak of Tyler's career
+                {post.title}
               </p>
               <div className="nav-links text-sm sm:text-lg text-[#919191] flex gap-2 mb-2 sm:mb-4">
                 <a>
-                  James Shen
+                  {post.author}
                 </a>
                 <a>
-                  Dec 22, 2025
+                  {post.date}
                 </a>
               </div>
               <div className="text-base sm:text-lg">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc.
+                  {post.body}
                 </p>
               </div>
             </div>
@@ -65,7 +77,6 @@ export default function Page() {
       </div>
 
     </div>
- 
 
   );
 }

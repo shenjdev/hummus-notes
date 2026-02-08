@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { Post } from "../../lib/posts";
+import type { Post } from "../lib/posts";
 
 
 export default function BlogCard({ post }: {post: Post}) {
