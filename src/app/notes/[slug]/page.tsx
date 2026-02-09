@@ -10,7 +10,7 @@ export default async function Page({
 
   const { slug } = await params;
 
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
   if (!post) notFound();
 
   return (
@@ -40,7 +40,7 @@ export default async function Page({
                   {post.date}
                 </a>
               </div>
-              <div className="text-base sm:text-lg">
+              <div className="text-base sm:text-lg whitespace-pre-line">
                 <p>
                   {post.body}
                 </p>

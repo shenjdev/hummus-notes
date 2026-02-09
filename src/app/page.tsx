@@ -1,19 +1,24 @@
-'use client'
-
 import BlogCard from '@/components/BlogCard';
 import Image from 'next/image';
-import { getAllPosts } from '../lib/posts';
-import { useRouter } from "next/navigation"
-import { usePathname } from "next/navigation";
+import { getAllPosts } from '@/lib/posts';
+import Link from 'next/link';
 
-export default function HomePage() {
+export default async function HomePage() {
 
-  const posts = getAllPosts();
-  const hero = posts[0];
-  const recent = posts.slice(1,5);
+  const posts = await getAllPosts();
 
-  const router = useRouter();
-  const pathname = usePathname();
+  if (posts.length === 0) {
+    return (
+      <main className="max-w-[740px] mx-auto py-20 px-6">
+        <h1 className="text-3xl font-extrabold mb-4">No Posts yet</h1>
+        <p className="text-[#919191]">
+          Seed your MongoDB <code>posts</code> collection and refresh.
+        </p>
+      </main>
+    );
+  }
+  const hero = posts.find((post) => post.featured) ?? posts[0];
+  const recent = posts.filter((post) => !post.featured).slice(0,4);
 
 
   return (
@@ -22,12 +27,15 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="mb-20 min-h-[calc(100vh-4rem)] flex flex-col justify-center max-w-[740px]">
         <div className="mt-5 sm:mt-10 mb-7 sm:mb-10 hover:cursor-pointer">
-          <Image 
-            src={hero.thumbnail}
-            alt={hero.title}
-            width={740}
-            height={397}
-          />
+          {hero.thumbnail && (
+            <Image 
+              src={hero.thumbnail}
+              alt={hero.title}
+              width={740}
+              height={397}
+            />
+
+          )}
         </div>
         <p className="text-2xl sm:text-4xl font-extrabold mb-2 sm:mb-5 hover:cursor-pointer">
           {hero.title}
@@ -56,12 +64,12 @@ export default function HomePage() {
             <BlogCard key={post.slug} post={post} />
           ))}
         </div>
-        <p 
+        <Link
+          href="/notes"
           className="hover:cursor-pointer hover:opacity-70 active:opacity-90 flex justify-center text-lg sm:text-4xl border-b-2 border-b-[#E5E5E5] font-extrabold"
-          onClick={() => router.push('/notes')}
         >
           See more
-        </p>
+        </Link>
       </section>
       
     </div>
