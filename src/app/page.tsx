@@ -22,24 +22,30 @@ export default async function HomePage() {
 
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col nav-links">
 
       {/* Hero Section */}
       <section className="mb-20 min-h-[calc(100vh-4rem)] flex flex-col justify-center max-w-[740px]">
-        <div className="mt-5 sm:mt-10 mb-7 sm:mb-10 hover:cursor-pointer">
-          {hero.thumbnail && (
-            <Image 
-              src={hero.thumbnail}
-              alt={hero.title}
-              width={740}
-              height={397}
-            />
+        <Link href={`/notes/${hero.slug}`}>
+          <div className="mt-5 sm:mt-10 mb-7 sm:mb-10 hover:cursor-pointer">
+            {hero.thumbnail && (
+              <Image 
+                src={hero.thumbnail}
+                alt={hero.title}
+                width={740}
+                height={397}
+              />
 
-          )}
-        </div>
-        <p className="text-2xl sm:text-4xl font-extrabold mb-2 sm:mb-5 hover:cursor-pointer">
-          {hero.title}
-        </p>
+            )}
+          </div>
+        
+        </Link>
+
+        <Link href={`/notes/${hero.slug}`} className="nav-links">
+          <p className="text-2xl sm:text-4xl font-extrabold mb-2 sm:mb-5 hover:cursor-pointer">
+            {hero.title}
+          </p>
+        </Link>
         <div className="nav-links text-sm sm:text-xl text-[#919191] flex gap-2 mb-2 sm:mb-5">
           <a>
             {hero.author}
@@ -52,7 +58,10 @@ export default async function HomePage() {
           <p className="line-clamp-3 sm:line-clamp-5">
             {hero.body}
           </p>
-          <span className="text-[#919191]">Read More</span>
+          
+          <Link href={`/notes/${hero.slug}`}>
+            <span className="text-[#919191]">Read More</span>
+          </Link>
         </div>
 
       </section>
