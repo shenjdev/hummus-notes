@@ -27,7 +27,6 @@ export default function BlogCard({ post }: {post: Post}) {
         <div className="nav-links text-sm flex gap-2 text-[#919191]">
           <span>
             {post.author}
-
           </span>
           <span>
             {post.date}

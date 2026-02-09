@@ -47,9 +47,10 @@ export default async function HomePage() {
           </p>
         </Link>
         <div className="nav-links text-sm sm:text-xl text-[#919191] flex gap-2 mb-2 sm:mb-5">
-          <a>
+          <Link href="/about">
             {hero.author}
-          </a>
+          
+          </Link>
           <a>
             {hero.date}
           </a>

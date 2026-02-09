@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getPostBySlug } from "@/lib/posts";
+import Link from "next/link";
 
 export default async function Page({
   params,
@@ -33,9 +34,9 @@ export default async function Page({
                 {post.title}
               </p>
               <div className="nav-links text-sm sm:text-lg text-[#919191] flex gap-2 mb-2 sm:mb-4">
-                <a>
+                <Link href="/about">
                   {post.author}
-                </a>
+                </Link>
                 <a>
                   {post.date}
                 </a>
