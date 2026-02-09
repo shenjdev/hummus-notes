@@ -1,8 +1,8 @@
 import { getAllPosts } from "../../lib/posts"
 import BlogCard from '@/components/BlogCard';
 
-export default function Page() {
-  const posts = getAllPosts();
+export default async function Page() {
+  const posts = await getAllPosts();
   const recent = posts.slice(0,5);
   return (
     <div className="flex flex-col items-center">
