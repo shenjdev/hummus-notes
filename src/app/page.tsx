@@ -26,9 +26,9 @@ export default async function HomePage() {
     <div className="flex flex-col nav-links">
 
       {/* Hero Section */}
-      <section className="border-b-2 border-[#E5E5E5] mb-20 min-h-[calc(100vh-4rem)] flex flex-col justify-center max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_320px]">
-          <main className="w-full">
+      <section className="border-b-2 border-[#E5E5E5] mb-20 min-h-[calc(100vh-4rem)] flex flex-col justify-center items-center max-w-6xl">
+        <div className="lg:gap-0 md:gap-10 sm:gap-5 gap-5 grid grid-cols-1 lg:grid-cols-[1fr_320px]">
+          <main className="mx-auto">
             <Link href={`/notes/${hero.slug}`}>
               <div className="mt-5 sm:mt-10 mb-7 sm:mb-10 hover:cursor-pointer">
                 {hero.thumbnail && (
@@ -68,11 +68,11 @@ export default async function HomePage() {
               </Link>
             </div>
           </main>
-          <div className="flex flex-col px-8 gap-5">
-            <div className="flex flex-col items-center">
-              <p className="font-extrabold text-2xl">
-                Featured Notes
-              </p>
+          <div className="flex flex-col px-8 gap-2 items-center">
+            <p className="font-extrabold text-2xl md:text-3xl lg:text-2xl">
+              Featured Notes
+            </p>
+            <div className="lg:flex lg:flex-col md:grid md:grid-cols-2 grid grid-cols-1 items-center gap-5 mb-10">
               {recent.map((post) => (
                 <MiniBlogCard key={post.slug} post={post} />
               ))}
@@ -85,15 +85,18 @@ export default async function HomePage() {
       </section>
 
       {/* Recent Blog Section */}
-      <section className="h-screen-min p-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+      <section className="p-8 flex flex-col items-center justify-center gap-4">
+        <p className="font-extrabold text-2xl lg:text-3xl">
+          Recent Notes
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 ">
           {recent.map((post) => (
             <BlogCard key={post.slug} post={post} />
           ))}
         </div>
         <Link
           href="/notes"
-          className="hover:cursor-pointer hover:opacity-70 active:opacity-90 flex justify-center text-lg sm:text-4xl border-b-2 border-b-[#E5E5E5] font-extrabold my-10"
+          className="hover:cursor-pointer hover:opacity-70 active:opacity-90 flex justify-center text-2xl lg:text-3xl border-b-2 border-b-[#E5E5E5] font-extrabold my-10"
         >
           See more
         </Link>

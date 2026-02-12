@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function MiniBlogCard({ post }: {post: Post}) {
   return (
     <Link href={`/notes/${post.slug}`} className="block w-full py-2">
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-2">
         {post.thumbnail && (
           <div className="w-full aspect-video relative">
             <Image 
@@ -18,10 +18,10 @@ export default function MiniBlogCard({ post }: {post: Post}) {
 
           </div>
         )}
-        <p className="text-lg font-semibold line-clamp-2">
+        <p className="text-md sm:text-lg font-semibold line-clamp-2">
           {post.title}
         </p>
-        <div className="flex text-[#919191] gap-2">
+        <div className="text-sm sm:text-md flex text-[#919191] gap-2">
           <Link href="/about">
             {post.author}
           </Link>

@@ -7,8 +7,8 @@ import Link from "next/link";
 
 export default function BlogCard({ post }: {post: Post}) {
   return (
-    <Link href={`/notes/${post.slug}`}>
-      <div className="flex flex-col gap-2 max-w-[350px]">
+    <Link href={`/notes/${post.slug}`} className="block w-full">
+      <div className="flex flex-col gap-2">
         {post.thumbnail && (
           <div className="w-full aspect-video relative">
             <Image 
