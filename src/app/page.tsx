@@ -69,7 +69,7 @@ export default async function HomePage() {
             </div>
           </main>
           <div className="flex flex-col py-10 px-8 gap-2 items-center">
-            <p className="font-extrabold text-2xl md:text-3xl lg:text-2xl">
+            <p className="md:10 font-extrabold text-2xl md:text-3xl lg:text-2xl">
               Featured Notes
             </p>
             <div className="lg:flex lg:flex-col md:grid md:grid-cols-2 grid grid-cols-1 items-center gap-5 mb-10">

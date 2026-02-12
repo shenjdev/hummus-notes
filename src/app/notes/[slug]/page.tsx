@@ -2,6 +2,8 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getPostBySlug } from "@/lib/posts";
 import Link from "next/link";
+import { getAllPosts } from "@/lib/posts";
+import MiniBlogCard from "@/components/MiniBlogCard";
 
 export default async function Page({
   params,
@@ -13,6 +15,10 @@ export default async function Page({
 
   const post = await getPostBySlug(slug);
   if (!post) notFound();
+  
+  const posts = await getAllPosts();
+  const featured = posts.filter((post) => !post.featured).slice(0,4);
+  const recent = posts.filter((post) => !post.featured).slice(0,4);
 
   return (
     <div className="max-w-6xl mx-auto  py-10">
@@ -69,10 +75,16 @@ export default async function Page({
 
           </div>
           
-          <div className="flex flex-col items-center">
+          <div className="nav-links flex flex-col items-center">
             <p className="font-extrabold text-2xl">
               Featured Notes
             </p>
+            <div className="flex flex-col items-center">
+              {featured.map((post) => (
+                <MiniBlogCard key={post.slug} post={post} />
+              ))}
+
+            </div>
           </div>
         </div>
       </div>
