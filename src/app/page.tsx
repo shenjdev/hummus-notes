@@ -2,6 +2,7 @@ import BlogCard from '@/components/BlogCard';
 import Image from 'next/image';
 import { getAllPosts } from '@/lib/posts';
 import Link from 'next/link';
+import MiniBlogCard from '@/components/MiniBlogCard';
 
 export default async function HomePage() {
 
@@ -25,44 +26,60 @@ export default async function HomePage() {
     <div className="flex flex-col nav-links">
 
       {/* Hero Section */}
-      <section className="mb-20 min-h-[calc(100vh-4rem)] flex flex-col justify-center max-w-[740px]">
-        <Link href={`/notes/${hero.slug}`}>
-          <div className="mt-5 sm:mt-10 mb-7 sm:mb-10 hover:cursor-pointer">
-            {hero.thumbnail && (
-              <Image 
-                src={hero.thumbnail}
-                alt={hero.title}
-                width={740}
-                height={397}
-              />
+      <section className="mb-20 min-h-[calc(100vh-4rem)] flex flex-col justify-center max-w-6xl">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_320px]">
+          <main className="w-full">
+            <Link href={`/notes/${hero.slug}`}>
+              <div className="mt-5 sm:mt-10 mb-7 sm:mb-10 hover:cursor-pointer">
+                {hero.thumbnail && (
+                  <Image 
+                    src={hero.thumbnail}
+                    alt={hero.title}
+                    width={740}
+                    height={397}
+                  />
 
-            )}
+                )}
+              </div>
+            
+            </Link>
+
+            <Link href={`/notes/${hero.slug}`} className="nav-links">
+              <p className="text-2xl sm:text-4xl font-extrabold mb-2 sm:mb-5 hover:cursor-pointer">
+                {hero.title}
+              </p>
+            </Link>
+            <div className="nav-links text-sm sm:text-xl text-[#919191] flex gap-2 mb-2 sm:mb-5">
+              <Link href="/about">
+                {hero.author}
+              
+              </Link>
+              <a>
+                {hero.date}
+              </a>
+            </div>
+            <div className="text-lg sm:text-2xl">
+              <p className="line-clamp-3 sm:line-clamp-5">
+                {hero.body}
+              </p>
+              
+              <Link href={`/notes/${hero.slug}`}>
+                <span className="text-[#919191]">Read More</span>
+              </Link>
+            </div>
+          </main>
+          <div className="flex flex-col px-8 gap-5">
+            <div className="flex flex-col items-center">
+              <p className="font-extrabold text-2xl">
+                Featured Notes
+              </p>
+              {recent.map((post) => (
+                <MiniBlogCard key={post.slug} post={post} />
+              ))}
+            </div>
+
           </div>
-        
-        </Link>
 
-        <Link href={`/notes/${hero.slug}`} className="nav-links">
-          <p className="text-2xl sm:text-4xl font-extrabold mb-2 sm:mb-5 hover:cursor-pointer">
-            {hero.title}
-          </p>
-        </Link>
-        <div className="nav-links text-sm sm:text-xl text-[#919191] flex gap-2 mb-2 sm:mb-5">
-          <Link href="/about">
-            {hero.author}
-          
-          </Link>
-          <a>
-            {hero.date}
-          </a>
-        </div>
-        <div className="text-lg sm:text-2xl">
-          <p className="line-clamp-3 sm:line-clamp-5">
-            {hero.body}
-          </p>
-          
-          <Link href={`/notes/${hero.slug}`}>
-            <span className="text-[#919191]">Read More</span>
-          </Link>
         </div>
 
       </section>
