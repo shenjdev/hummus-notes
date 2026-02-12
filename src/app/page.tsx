@@ -26,7 +26,7 @@ export default async function HomePage() {
     <div className="flex flex-col nav-links">
 
       {/* Hero Section */}
-      <section className="mb-20 min-h-[calc(100vh-4rem)] flex flex-col justify-center max-w-6xl">
+      <section className="border-b-2 border-[#E5E5E5] mb-20 min-h-[calc(100vh-4rem)] flex flex-col justify-center max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_320px]">
           <main className="w-full">
             <Link href={`/notes/${hero.slug}`}>
@@ -93,7 +93,7 @@ export default async function HomePage() {
         </div>
         <Link
           href="/notes"
-          className="hover:cursor-pointer hover:opacity-70 active:opacity-90 flex justify-center text-lg sm:text-4xl border-b-2 border-b-[#E5E5E5] font-extrabold"
+          className="hover:cursor-pointer hover:opacity-70 active:opacity-90 flex justify-center text-lg sm:text-4xl border-b-2 border-b-[#E5E5E5] font-extrabold my-10"
         >
           See more
         </Link>
